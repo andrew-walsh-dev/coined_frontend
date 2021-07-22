@@ -12,14 +12,12 @@ import {
 function App() {
   return (
     <Router>
-          <div>
-          <Navigation />
-          <Switch>
-            <Route path="/">
-              <Landing />
-            </Route>
-          </Switch>
-          </div>
+      <Navigation />
+      <Switch>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
     </Router>
   )
 }

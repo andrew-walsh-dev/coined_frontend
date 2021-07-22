@@ -1,27 +1,19 @@
 import './Landing.css';
-import logo from './images/Coined.svg';
-import { useEffect } from 'react';
-import Vivus from 'vivus';
+import Button from '@material-ui/core/Button';
+import CryptoSky from './CryptoSky';
 
 export default function Landing() {
-    
-    const drawLogo = () => {
-        new Vivus('logo', {
-            type: 'sync',
-            duration: 300,
-            animTimingFunction: Vivus.EASE_IN,
-            file: logo,
-            start: 'autostart'
-          })
-        }
-
-    useEffect(drawLogo);
-
-    return(
-        <div className="logo-container">
-            <svg id='logo'>
-                <use xlinkHref={logo}></use>
-            </svg>
+    return (
+        <div>
+            <div className="landing-container">
+                <div className='headline'><h1>Social Media meets Cryptocurrency.</h1><br /><h3>Learn. Follow. Discuss.</h3>
+                </div>
+                <div className="buttons">
+                    <Button variant="outlined">Sign Up</Button>
+                    <Button variant="outlined">Login</Button>
+                </div>
+            </div>
+            <CryptoSky />
         </div>
     );
 }

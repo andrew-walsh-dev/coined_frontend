@@ -1,5 +1,7 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './Landing';
+import Navigation from './Navigation';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,13 +12,12 @@ import {
 function App() {
   return (
     <Router>
-      <div>
-          <Switch>
-            <Route path="/">
-              <Landing />
-            </Route>
-          </Switch>
-      </div>
+      <Navigation />
+      <Switch>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
     </Router>
   )
 }

@@ -1,19 +1,30 @@
 import './Landing.css';
-import Button from '@material-ui/core/Button';
-import CryptoSky from './CryptoSky';
+import Login from './Login';
+import Headline from './Headline';
+import { useAnimatePresence } from "use-animate-presence";
+import { useState } from 'react';
 
 export default function Landing() {
-    return (
-        <div>
-            <div className="landing-container">
-                <div className='headline'><h1>Social Media meets Cryptocurrency.</h1><br /><h3>Learn. Follow. Discuss.</h3>
-                </div>
-                <div className="buttons">
-                    <Button variant="outlined">Sign Up</Button>
-                    <Button variant="outlined">Login</Button>
-                </div>
-            </div>
-            <CryptoSky />
-        </div>
-    );
+    
+    const [form, setForm] = useState('headline');
+    //for mount/unmount animation
+    const landingVariants = {
+        x: { from: 0, to: 800 }
+    }
+    
+    if (form === 'headline') {
+        return (
+            <Headline setForm={setForm} />
+        )
+    }
+    else if (form === 'login') {
+        return (
+            <Login setForm={setForm}/>
+        );
+    }
+    // else {
+    //     return (
+    //         <Register />
+    //     )
+    // }
 }

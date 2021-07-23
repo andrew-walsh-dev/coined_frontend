@@ -2,12 +2,13 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './Landing';
 import Navigation from './Navigation';
+import Login from './Login';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
+import CryptoSky from './CryptoSky';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Navigation />
       <Switch>
         <Route path="/">
+          <CryptoSky />
           <Landing />
         </Route>
       </Switch>

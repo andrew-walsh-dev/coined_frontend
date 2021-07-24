@@ -1,6 +1,7 @@
 import './Landing.css';
 import Login from './Login';
 import Headline from './Headline';
+import Register from './Register';
 import { useAnimatePresence } from "use-animate-presence";
 import { useState } from 'react';
 
@@ -19,12 +20,12 @@ export default function Landing() {
     }
     else if (form === 'login') {
         return (
-            <Login setForm={setForm}/>
+            <Login setForm={setForm} />
         );
     }
-    // else {
-    //     return (
-    //         <Register />
-    //     )
-    // }
+    else {
+        return (
+            <Register setForm={setForm} />
+        )
+    }
 }

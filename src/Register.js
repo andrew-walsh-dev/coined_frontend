@@ -3,6 +3,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import API_BASE_URL from './env';
 import $ from 'jquery';
+import { store } from 'react-notifications-component';
 
 export default function Register(props) {
     return (
@@ -31,7 +32,6 @@ export default function Register(props) {
 }
 
 function submitRegister(setForm) {
-    console.log($('#password').val());
     $.ajax({
         type: 'POST',
         url: API_BASE_URL + '/users',
@@ -45,19 +45,68 @@ function submitRegister(setForm) {
         }
     })
         .then((res) => {
-            console.log(res['success']);
+            console.log(res);
             if (res.success) {
+                store.addNotification({
+                    title: "Registration Complete",
+                    message: "Welcome to CryptoCamel!",
+                    type: "success",
+                    insert: "top",
+                    container: "top-center",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                      duration: 5000,
+                      onScreen: true
+                    }
+                  });
                 setForm('login');
             }
             else {
                 if (res.reason === 'email') {
-                    //add alert for email already taken
+                    store.addNotification({
+                        title: "Registration Error",
+                        message: "That email is taken, please try again with a different one.",
+                        type: "danger",
+                        insert: "top",
+                        container: "top-center",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                          duration: 5000,
+                          onScreen: true
+                        }
+                      });
                 }
                 else if (res.reason === 'username') {
-                    //add alert for username already taken
+                    store.addNotification({
+                        title: "Registration Error",
+                        message: "That username is taken, please try again with a different one.",
+                        type: "danger",
+                        insert: "top",
+                        container: "top-center",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                          duration: 5000,
+                          onScreen: true
+                        }
+                      });
                 }
                 else {
-                    //add error try again later alert
+                    store.addNotification({
+                        title: "Registration Error",
+                        message: "There was a problem with your registration. Please try again.",
+                        type: "danger",
+                        insert: "top",
+                        container: "top-center",
+                        animationIn: ["animate__animated", "animate__fadeIn"],
+                        animationOut: ["animate__animated", "animate__fadeOut"],
+                        dismiss: {
+                          duration: 5000,
+                          onScreen: true
+                        }
+                      });
                 }
             }
         })

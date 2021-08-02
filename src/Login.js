@@ -6,7 +6,7 @@ import API_BASE_URL from './env';
 import { store } from 'react-notifications-component';
 
 export default function Login(props) {
-
+  
   return (
     <>
       <Modal show={true} centered>
@@ -20,7 +20,7 @@ export default function Login(props) {
           </form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center border-0 my-3">
-          <Button className="" variant="outlined" onClick={submitLogin}>Login</Button>
+          <Button className="" variant="outlined" onClick={submitLogin(props.setUser)}>Login</Button>
           <Button className="" variant="outlined" onClick={() => props.setForm('headline')}>Close</Button>
         </Modal.Footer>
       </Modal>
@@ -28,7 +28,7 @@ export default function Login(props) {
   );
 }
 
-function submitLogin() {
+function submitLogin(setUser) {
   $.ajax({
     type: 'POST',
     url: API_BASE_URL + '/login',
@@ -39,8 +39,7 @@ function submitLogin() {
   })
   .then((res) => {
     if (res.success) {
-      let session = window.sessionStorage;
-      session.setItem('userInfo', JSON.stringify(res.user));
+      setUser(res.userInfo);
     }
     else {
       store.addNotification({

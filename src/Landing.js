@@ -1,26 +1,20 @@
 import './Landing.css';
-import Login from './Login';
-import Headline from './Headline';
-import Register from './Register';
-import { useState } from 'react';
+import Button from '@material-ui/core/Button';
+import { BASE_URL } from './env';
 
-export default function Landing() {
+export default function Landing(props) {
     
-    const [form, setForm] = useState('headline');
-    
-    if (form === 'headline') {
-        return (
-            <Headline setForm={setForm} />
-        )
-    }
-    else if (form === 'login') {
-        return (
-            <Login setForm={setForm} />
-        );
-    }
-    else {
-        return (
-            <Register setForm={setForm} />
-        )
-    }
+    return (
+        <div className="landing-container">
+            <div className='headline'>
+                <h1>Social Media meets Cryptocurrency.</h1>
+                <br />
+                <h3>Learn. Follow. Discuss.</h3>
+            </div>
+            <div className="buttons">
+                <Button variant="outlined" onClick={() =>  window.location = BASE_URL + '/register'}>Sign Up</Button>
+                <Button variant="outlined" onClick={() =>  window.location = BASE_URL + '/login'}>Login</Button>
+            </div>
+        </div>
+    );
 }

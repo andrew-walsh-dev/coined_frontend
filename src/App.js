@@ -2,6 +2,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Landing from './Landing';
 import Register from './Register';
+import Login from './Login';
+import Home from './Home';
 import Navigation from './Navigation';
 import API_BASE_URL from './env';
 import $ from 'jquery';
@@ -15,9 +17,7 @@ import {
 import CryptoSky from './CryptoSky';
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
-import MyLoadingScreen from './loading';
 import { Suspense } from 'react';
-const Login = React.lazy(() => import('./Login'));
 
 function App() {
 
@@ -30,7 +30,7 @@ function App() {
         <Navigation user={user} setUser={setUser} />
         <CryptoSky />
         <Suspense fallback={<div>Loading...</div>}>
-          <Switch loadingScreen={MyLoadingScreen}>
+          <Switch>
             <Route exact path="/" >
               <Landing setUser={setUser} />
             </Route>
@@ -39,6 +39,9 @@ function App() {
             </Route>
             <Route path='/register'>
               <Register />
+            </Route>
+            <Route path="/home" >
+              <Home />
             </Route>
           </Switch>
         </Suspense>

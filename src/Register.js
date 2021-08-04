@@ -4,8 +4,12 @@ import TextField from '@material-ui/core/TextField';
 import API_BASE_URL from './env';
 import $ from 'jquery';
 import { store } from 'react-notifications-component';
+import { Link, useHistory } from 'react-router-dom';
 
 export default function Register(props) {
+    
+    const history = useHistory();
+
     return (
         <>
             <Modal show={true} centered>
@@ -23,15 +27,15 @@ export default function Register(props) {
                     </form>
                 </Modal.Body>
                 <Modal.Footer className="d-flex justify-content-center border-0 my-3">
-                    <Button id="submit" className="" variant="outlined" onClick={() => submitRegister(props.setForm)}>Register</Button>
-                    <Button className="" variant="outlined" onClick={() => props.setForm('headline')}>Close</Button>
+                    <Button id="submit" className="" variant="outlined" onClick={() => {submitRegister(history)}}>Register</Button>
+                    <Link to='/' style={{ textDecoration: 'none' }}><Button className="" variant="outlined">Close</Button></Link>
                 </Modal.Footer>
             </Modal>
         </>
     );
 }
 
-function submitRegister(setForm) {
+function submitRegister(history) {
     $.ajax({
         type: 'POST',
         url: API_BASE_URL + '/users',
@@ -60,7 +64,7 @@ function submitRegister(setForm) {
                       onScreen: true
                     }
                   });
-                setForm('login');
+                history.push('/login');
             }
             else {
                 if (res.reason === 'email') {

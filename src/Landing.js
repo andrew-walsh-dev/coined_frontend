@@ -1,6 +1,6 @@
 import './Landing.css';
 import Button from '@material-ui/core/Button';
-import { BASE_URL } from './env';
+import { Link } from 'react-router-dom';
 
 export default function Landing(props) {
     
@@ -12,8 +12,8 @@ export default function Landing(props) {
                 <h3>Learn. Follow. Discuss.</h3>
             </div>
             <div className="buttons">
-                <Button variant="outlined" onClick={() =>  window.location = BASE_URL + '/register'}>Sign Up</Button>
-                <Button variant="outlined" onClick={() =>  window.location = BASE_URL + '/login'}>Login</Button>
+                <Link to='/register' style={{ textDecoration: 'none' }}><Button variant="outlined">Sign Up</Button></Link>
+                <Link to='/login' style={{ textDecoration: 'none' }}><Button variant="outlined">Login</Button></Link>
             </div>
         </div>
     );

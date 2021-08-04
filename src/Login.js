@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import $ from 'jquery';
 import API_BASE_URL from './env';
 import { store } from 'react-notifications-component';
+import { Link } from 'react-router-dom';
 
 export default function Login(props) {
   
@@ -20,8 +21,8 @@ export default function Login(props) {
           </form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center border-0 my-3">
-          <Button className="" variant="outlined" onClick={submitLogin(props.setUser)}>Login</Button>
-          <Button className="" variant="outlined" onClick={() => props.setForm('headline')}>Close</Button>
+          <Button className="" variant="outlined" onClick={() => {submitLogin(props.setUser)}}>Login</Button>
+          <Link to='/' style={{ textDecoration: 'none' }}><Button className="" variant="outlined">Close</Button></Link>
         </Modal.Footer>
       </Modal>
     </>

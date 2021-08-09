@@ -10,6 +10,10 @@ export default function Coin(props) {
                   ${props.coinInfo.price}
                  <br />
                 24hr % Change: {props.coinInfo.percentChange24hr}%
+                <br />
+                24hr Volume: {props.coinInfo.volume24hr}$
+                <br />
+                Market Cap: {props.coinInfo.marketCap}$
                  </h5>
             </CardContent>
         </Card>

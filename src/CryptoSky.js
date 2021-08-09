@@ -16,7 +16,7 @@ export default function CryptoSky() {
     return (
         <Sky
             images={images}
-            how={50}
+            how={100}
             time={150}
             size={'50px'}
             background={'palettedvioletred'}

@@ -19,7 +19,7 @@ export default function Navigation() {
     useEffect(drawLogo);
     
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" className='mb-5'>
             <Container>
             <Navbar.Brand href="#home"><svg id='logo'>
                 <use xlinkHref={logo}></use>

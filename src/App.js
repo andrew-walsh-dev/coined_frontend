@@ -32,16 +32,14 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <Switch>
             <Route exact path="/" >
-              <Landing setUser={setUser} />
+              {user == null && <Landing setUser={setUser} />}
+              {user != null && <Home />}
             </Route>
             <Route path='/login'>
-              <Login setUser={setUser} />
+              <Login setUser={setUser} user={user}/>
             </Route>
             <Route path='/register'>
               <Register />
-            </Route>
-            <Route path="/home" >
-              <Home />
             </Route>
           </Switch>
         </Suspense>

@@ -2,6 +2,6 @@ h1 {
     vertical-align: middle;
 }
 
-body {
-    padding-top: 120px;
+.slideshow-container {
+    margin-top: 8em;
 }

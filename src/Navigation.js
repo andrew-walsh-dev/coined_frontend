@@ -3,8 +3,9 @@ import logo from './images/Coined.svg';
 import Vivus from 'vivus';
 import { useEffect } from 'react';
 import './Navigation.css';
+import { Link } from 'react-router-dom';
 
-export default function Navigation() {
+export default function Navigation(props) {
     
     const drawLogo = () => {
         new Vivus('logo', {
@@ -19,14 +20,21 @@ export default function Navigation() {
     useEffect(drawLogo);
     
     return (
-        <Navbar bg="dark" variant="dark" className='mb-5'>
+        <Navbar bg="dark" variant="dark" className=''>
             <Container>
+            <Link to='/' style={{ textDecoration: 'none' }}>
             <Navbar.Brand href="#home"><svg id='logo'>
                 <use xlinkHref={logo}></use>
             </svg></Navbar.Brand>
+            </Link>
             <Nav className="me-auto">
-            <Nav.Link href="#login" id='login'>Login</Nav.Link>
-            <Nav.Link href="#register" id='register'>Register</Nav.Link>
+            
+            { props.user == null && <Link to='/login' style={{ textDecoration: 'none' }}><Nav.Link id='login'>Login</Nav.Link></Link> }
+            { props.user == null && <Link to='/register' style={{ textDecoration: 'none' }}><Nav.Link id='register'>Register</Nav.Link></Link> }
+
+            { props.user != null && <Nav.Link id='logout' onClick={() => props.setUser(null)}>Logout</Nav.Link> }
+            { props.user != null && <Link to='/profile' style={{ textDecoration: 'none' }}><Nav.Link id='profile'>Profile</Nav.Link></Link> }
+            
             </Nav>
             </Container>
         </Navbar>

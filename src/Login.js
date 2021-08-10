@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import $ from 'jquery';
 import API_BASE_URL from './env';
 import { store } from 'react-notifications-component';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Login(props) {
   
@@ -25,6 +25,7 @@ export default function Login(props) {
           <Link to='/' style={{ textDecoration: 'none' }}><Button className="" variant="outlined">Close</Button></Link>
         </Modal.Footer>
       </Modal>
+      {props.user != null && <Redirect to="/" />}
     </>
   );
 }

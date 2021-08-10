@@ -57,7 +57,7 @@ export default function CoinSlideshow(props) {
   }, []);
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <div className="d-flex flex-column align-items-center slideshow-container">
       <FormControl className='w-25 mb-2'>
         <InputLabel id="sort-select">Sort</InputLabel>
         <Select

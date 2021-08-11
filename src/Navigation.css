@@ -8,3 +8,11 @@
     top: 0;
     z-index: 9999;
 }
+
+.nav-link:active{
+    text-decoration: none;
+    color: unset !important;
+}
+
+
+  

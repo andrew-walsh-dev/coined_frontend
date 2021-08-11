@@ -1,5 +1,6 @@
 #logo{
-    height: 4em;
+    height: 5em;
+    width: 10em;
 }
 
 .navbar {
@@ -9,9 +10,13 @@
     z-index: 9999;
 }
 
-.nav-link:active{
+/* .nav-link:active{
     text-decoration: none;
     color: unset !important;
+} */
+
+nav {
+    /* background-color: #6c534f; */
 }
 
 

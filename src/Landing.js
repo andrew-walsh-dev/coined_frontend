@@ -11,7 +11,7 @@ export default function Landing(props) {
                 <br />
                 <h3>Learn. Follow. Discuss.</h3>
             </div>
-            <div className="buttons">
+            <div className="landing-buttons">
                 <Link to='/register' style={{ textDecoration: 'none' }}><Button variant="outlined">Sign Up</Button></Link>
                 <Link to='/login' style={{ textDecoration: 'none' }}><Button variant="outlined">Login</Button></Link>
             </div>

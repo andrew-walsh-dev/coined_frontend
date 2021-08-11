@@ -1,5 +1,5 @@
 import { Navbar, Container, Nav } from "react-bootstrap"
-import logo from './images/Coined.svg';
+import logo from './images/default-monochrome-white.svg';
 import Vivus from 'vivus';
 import { useEffect } from 'react';
 import './Navigation.css';
@@ -20,7 +20,7 @@ export default function Navigation(props) {
     useEffect(drawLogo);
     
     return (
-        <Navbar bg="dark" variant="dark" className=''>
+        <Navbar variant="dark" className=''>
             <Container>
             <Link to='/' style={{ textDecoration: 'none' }}>
             <Navbar.Brand href="#home"><svg id='logo'>

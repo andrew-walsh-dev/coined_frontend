@@ -56,7 +56,7 @@ function submitRegister(history) {
                     message: "Welcome to CryptoCamel!",
                     type: "success",
                     insert: "top",
-                    container: "top-center",
+                    container: "bottom-right",
                     animationIn: ["animate__animated", "animate__fadeIn"],
                     animationOut: ["animate__animated", "animate__fadeOut"],
                     dismiss: {
@@ -73,7 +73,7 @@ function submitRegister(history) {
                         message: "That email is taken, please try again with a different one.",
                         type: "danger",
                         insert: "top",
-                        container: "top-center",
+                        container: "bottom-right",
                         animationIn: ["animate__animated", "animate__fadeIn"],
                         animationOut: ["animate__animated", "animate__fadeOut"],
                         dismiss: {
@@ -88,7 +88,7 @@ function submitRegister(history) {
                         message: "That username is taken, please try again with a different one.",
                         type: "danger",
                         insert: "top",
-                        container: "top-center",
+                        container: "bottom-right",
                         animationIn: ["animate__animated", "animate__fadeIn"],
                         animationOut: ["animate__animated", "animate__fadeOut"],
                         dismiss: {
@@ -103,7 +103,7 @@ function submitRegister(history) {
                         message: "There was a problem with your registration. Please try again.",
                         type: "danger",
                         insert: "top",
-                        container: "top-center",
+                        container: "bottom-right",
                         animationIn: ["animate__animated", "animate__fadeIn"],
                         animationOut: ["animate__animated", "animate__fadeOut"],
                         dismiss: {

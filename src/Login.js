@@ -49,7 +49,7 @@ function submitLogin(setUser) {
         message: "The username or password are incorrect.",
         type: "danger",
         insert: "top",
-        container: "top-center",
+        container: "bottom-right",
         animationIn: ["animate__animated", "animate__fadeIn"],
         animationOut: ["animate__animated", "animate__fadeOut"],
         dismiss: {

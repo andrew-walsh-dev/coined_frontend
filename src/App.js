@@ -5,6 +5,7 @@ import Register from './Register';
 import Login from './Login';
 import Home from './Home';
 import Navigation from './Navigation';
+import CoinView from './CoinView';
 import API_BASE_URL from './env';
 import $ from 'jquery';
 import { useState } from 'react';
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route path='/register'>
               <Register />
+            </Route>
+            <Route path='/coin'>
+              <CoinView />
             </Route>
           </Switch>
         </Suspense>

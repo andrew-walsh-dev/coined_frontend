@@ -8,7 +8,6 @@ import Select from "@material-ui/core/Select";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import { Form } from "react-bootstrap";
 
 export default function CoinSlideshow(props) {
   const responsive = {

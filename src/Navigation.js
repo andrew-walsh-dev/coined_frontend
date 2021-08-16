@@ -3,7 +3,7 @@ import logo from './images/default-monochrome-white.svg';
 import Vivus from 'vivus';
 import { useEffect } from 'react';
 import './Navigation.css';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Navigation(props) {
     

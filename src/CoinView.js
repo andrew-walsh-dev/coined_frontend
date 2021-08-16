@@ -1,5 +1,8 @@
+import CryptoChart from "./CryptoChart";
 
 
 export default function CoinView(props) {
-    return "Here is the coin view."
+    return (
+        <CryptoChart />
+    )
 }

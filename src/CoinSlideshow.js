@@ -37,7 +37,7 @@ export default function CoinSlideshow(props) {
   const [biggestMovers, setBiggestMovers] = useState([]);
   const [biggestWinners, setBiggestWinners] = useState([]);
   const [biggestLosers, setBiggestLosers] = useState([]);
-  const [biggestMarketCap, setBiggestMarketCap] = useState([]);
+  // const [biggestMarketCap, setBiggestMarketCap] = useState([]);
   const [biggestVolume, setBiggestVolume] = useState([]);
   const [sort, setSort] = useState("Market Cap");
 
@@ -50,7 +50,7 @@ export default function CoinSlideshow(props) {
       setBiggestMovers(res.biggestMovers);
       setBiggestWinners(res.biggestWinners);
       setBiggestLosers(res.biggestLosers);
-      setBiggestMarketCap(res.biggestMarketCap);
+      // setBiggestMarketCap(res.biggestMarketCap);
       setBiggestVolume(res.biggestVolume);
     });
   }, []);

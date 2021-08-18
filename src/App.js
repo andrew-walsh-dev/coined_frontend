@@ -42,7 +42,7 @@ function App() {
             <Route path='/register'>
               <Register />
             </Route>
-            <Route path='/coin'>
+            <Route path='/coin/:coinName'>
               <CoinView />
             </Route>
           </Switch>

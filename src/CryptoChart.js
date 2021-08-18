@@ -9,9 +9,8 @@ export default function CryptoChart(props) {
     useEffect(() => {
         $.ajax({
             type: "GET",
-            url: API_BASE_URL + "/coins?coins=bitcoin",
+            url: API_BASE_URL + "/coins?coins=" + props.coinName
           }).then((res) => {
-            console.log(res);
             let coin = res.coins[0];
             let data = [];
             for (let pricePoint of coin.history) {
@@ -24,7 +23,7 @@ export default function CryptoChart(props) {
             const lineSeries = chart.addLineSeries();
             lineSeries.setData(data);
           });
-    }, []);
+    }, [props.coinName]);
 
     return <div id='chart-container' className='mx-auto d-flex justify-content-center'></div>
 }

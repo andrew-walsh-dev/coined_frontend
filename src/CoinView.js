@@ -25,7 +25,6 @@ export default function CoinView(props) {
             })
           }
           setChartData(data);
-          console.log(res);
         })
       }, [coinName]);
     
@@ -35,9 +34,9 @@ export default function CoinView(props) {
           <h1 id='top'>{coinInfo.name}  <span className='text-secondary'>{coinInfo.symbol}</span></h1>
           <CryptoChart data={chartData} />
         </div>
-        <div className='d-flex justify-content-center'>
-          <h1>${Number(coinInfo.price).toFixed(2)}</h1>
-          <table id='coin-table'>
+        <div className='d-flex justify-content-center mt-5'>
+          <h1 className='mx-5'>${Number(coinInfo.price).toFixed(2)}</h1>
+          <table id='coin-table' className='mx-5'>
             <tr>
               <td>
                 <h4>Market Cap</h4>

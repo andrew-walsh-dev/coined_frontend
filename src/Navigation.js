@@ -33,7 +33,7 @@ export default function Navigation(props) {
             { props.user == null && <Link to='/register' className='nav-link'>Register</Link> }
 
             { props.user != null && <Nav.Link id='logout' onClick={() => props.setUser(null)}>Logout</Nav.Link> }
-            { props.user != null && <Link to='/profile' style={{ textDecoration: 'none' }}><Nav.Link id='profile'>Profile</Nav.Link></Link> }
+            { props.user != null && <Link to='/profile' className='nav-link'>Profile</Link> }
             
             </Nav>
             </Container>

@@ -5,6 +5,7 @@ import Register from './Register';
 import Login from './Login';
 import Home from './Home';
 import Navigation from './Navigation';
+import UserProfile from './UserProfile'
 import CoinView from './CoinView';
 import API_BASE_URL from './env';
 import $ from 'jquery';
@@ -41,6 +42,10 @@ function App() {
             </Route>
             <Route path='/register'>
               <Register />
+            </Route>
+            <Route path='/profile'>
+              {user == null && <Login />}
+              {user != null && <UserProfile />}
             </Route>
             <Route path='/coin/:coinName'>
               <CoinView />

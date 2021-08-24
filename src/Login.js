@@ -42,6 +42,8 @@ function submitLogin(setUser) {
   .then((res) => {
     if (res.success) {
       setUser(res.userInfo);
+      window.sessionStorage.setItem('userInfo', JSON.stringify(res.userInfo));
+      console.log(JSON.stringify(res.userInfo));
     }
     else {
       store.addNotification({

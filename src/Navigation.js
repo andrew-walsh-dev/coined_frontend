@@ -3,7 +3,7 @@ import logo from './images/default-monochrome-white.svg';
 import Vivus from 'vivus';
 import { useEffect } from 'react';
 import './Navigation.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Navigation(props) {
     
@@ -28,15 +28,22 @@ export default function Navigation(props) {
             </svg></Navbar.Brand>
             </Link>
             <Nav className="me-auto">
-            
+
+            { props.user == null && <Redirect to='/'></Redirect> }
             { props.user == null && <Link to='/login' className='nav-link'>Login</Link> }
             { props.user == null && <Link to='/register' className='nav-link'>Register</Link> }
 
-            { props.user != null && <Nav.Link id='logout' onClick={() => props.setUser(null)}>Logout</Nav.Link> }
+            { props.user != null && <Nav.Link id='logout' onClick={() => submitLogout(props.setUser)}>Logout</Nav.Link> }
             { props.user != null && <Link to='/profile' className='nav-link'>Profile</Link> }
             
             </Nav>
             </Container>
         </Navbar>
     );
+}
+
+const submitLogout = (setUser) => {
+    setUser(null);
+    window.sessionStorage.removeItem('userInfo');
+    window.localStorage.removeItem('userInfo');
 }

@@ -9,7 +9,7 @@ import UserProfile from './UserProfile'
 import CoinView from './CoinView';
 import API_BASE_URL from './env';
 import $ from 'jquery';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import React from 'react';
 import {
   BrowserRouter as Router,
@@ -23,62 +23,100 @@ import { Suspense } from 'react';
 
 function App() {
 
-  const [user, setUser] = useState(checkRememberMe());
+  const [user, setUser] = useState(null);
+  const [ready, setReady] = useState(false);
 
-  return (
-    <>
-      <Router>
-        <ReactNotification />
-        <Navigation user={user} setUser={setUser} />
-        <CryptoSky />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <Route exact path="/" >
-              {user == null && <Landing setUser={setUser} />}
-              {user != null && <Home />}
-            </Route>
-            <Route path='/login'>
-              <Login setUser={setUser} user={user}/>
-            </Route>
-            <Route path='/register'>
-              <Register />
-            </Route>
-            <Route path='/profile'>
-              {user == null && <Login />}
-              {user != null && <UserProfile />}
-            </Route>
-            <Route path='/coin/:coinName'>
-              <CoinView />
-            </Route>
-          </Switch>
-        </Suspense>
-      </Router>
-    </>
-  )
-}
+  useEffect(() => {
+    let localStorage = window.localStorage;
+    let sessionStorage = window.sessionStorage;
+    let storageUser = JSON.parse(localStorage.getItem('userInfo'));
 
-function checkRememberMe() {
-  let localStorage = window.localStorage;
-  let user = JSON.parse(localStorage.getItem('userInfo'));
-
-  if (user == null) {
-    return null;
-  }
-
-  $.ajax({
-    type: 'POST',
-    url: API_BASE_URL + '/auth',
-    data: {
-      'username': user.username,
-      'password': user.password
-    }
-  })
-    .then((res) => {
-      if (res.success) {
-        return user;
+    if (storageUser == null) {
+      storageUser = JSON.parse(sessionStorage.getItem('userInfo'));
+      if (storageUser == null) {
+        setReady(true);
+        return null;
       }
-      return null;
+    }
+    $.ajax({
+      type: 'POST',
+      url: API_BASE_URL + '/auth',
+      data: {
+        'username': storageUser.username,
+        'password': storageUser.password
+      }
     })
+      .then((res) => {
+        if (res.success) {
+          setUser(storageUser);
+          setReady(true);
+        }
+        return null;
+      })
+  }, [])
+
+  if (ready) {
+    return (
+      <>
+        <Router>
+          <ReactNotification />
+          <Navigation user={user} setUser={setUser} />
+          <CryptoSky />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route exact path="/" >
+                {user == null && <Landing setUser={setUser} />}
+                {user != null && <Home />}
+              </Route>
+              <Route path='/login'>
+                <Login setUser={setUser} user={user}/>
+              </Route>
+              <Route path='/register'>
+                <Register />
+              </Route>
+              <Route path='/profile'>
+                {user == null && <Login />}
+                {user != null && <UserProfile user={user}/>}
+              </Route>
+              <Route path='/coin/:coinName'>
+                <CoinView />
+              </Route>
+            </Switch>
+          </Suspense>
+        </Router>
+      </>
+    )
+  }
+  return <div></div>
 }
+
+// function checkRememberMe() {
+//   // let localStorage = window.localStorage;
+//   // let sessionStorage = window.sessionStorage;
+//   // let user = JSON.parse(localStorage.getItem('userInfo'));
+
+//   // if (user == null) {
+//   //   user = JSON.parse(sessionStorage.getItem('userInfo'));
+//   //   console.log(user);
+//   //   if (user == null) {
+//   //     return null;
+//   //   }
+//   // }
+
+//   // $.ajax({
+//   //   type: 'POST',
+//   //   url: API_BASE_URL + '/auth',
+//   //   data: {
+//   //     'username': user.username,
+//   //     'password': user.password
+//   //   }
+//   // })
+//   //   .then((res) => {
+//   //     if (res.success) {
+//   //       return user;
+//   //     }
+//   //     return null;
+//   //   })
+// }
 
 export default App;
